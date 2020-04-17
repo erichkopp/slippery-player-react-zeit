@@ -1,26 +1,65 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Header from "./Header";
+import Body from "./Body";
+import Player from "./Player";
+// import Fullscreen from "react-full-screen";
+import "./styles.css";
 
-function App() {
+const allTunes = require("./allTunes.json");
+
+export default function App() {
+  // const [isFullScreen, setIsFullScreen] = useState();
+
+  const [showSearchBox, setShowSearchBox] = useState(false);
+  const [title, setTitle] = useState();
+  const [goHome, setGoHome] = useState(true);
+
+  const [playList, setPlayList] = useState();
+  const [tuneIndex, setTuneIndex] = useState();
+
+  const handleTitleChange = page => {
+    setTitle(page);
+  };
+
+  const handleGoHome = bool => {
+    setGoHome(bool);
+  };
+
+  const handleTuneClick = (tunesList, index) => {
+    setPlayList(tunesList);
+    setTuneIndex(index);
+  };
+
+  const handleShowSearchBox = bool => {
+    setShowSearchBox(bool);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="main">
+      {/* <Fullscreen enabled={isFullScreen}> */}
+      <Header
+        title={title}
+        handleGoHome={handleGoHome}
+        handleShowSearchBox={handleShowSearchBox}
+      />
+
+      <Body
+        allTunes={allTunes}
+        handleTuneClick={handleTuneClick}
+        handleTitleChange={handleTitleChange}
+        handleGoHome={handleGoHome}
+        goHome={goHome}
+        showSearchBox={showSearchBox}
+        handleShowSearchBox={handleShowSearchBox}
+      />
+
+      <Player
+        playList={playList}
+        tuneIndex={tuneIndex}
+        handleShowSearchBox={handleShowSearchBox}
+      />
+
+      {/* </Fullscreen> */}
     </div>
   );
 }
-
-export default App;

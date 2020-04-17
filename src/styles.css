@@ -1,0 +1,297 @@
+* {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.25rem;
+
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome, Opera and Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE and Edge */
+* {
+  -ms-overflow-style: none;
+}
+
+.App {
+  height: 100%;
+}
+
+.Header {
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 50px;
+  color: #ffffff;
+  background-color: #323232;
+}
+
+.Header .title {
+  /* display: flex; */
+  width: calc(100vw - 6rem);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.Header .icons {
+  cursor: pointer;
+  width: 2rem;
+  padding: 1rem;
+}
+
+.Body {
+  margin-top: 50px;
+  color: #ffffff;
+  background-color: #181818;
+  width: 100%;
+  height: 100%;
+  /* overflow-y: scroll; */
+}
+
+.Body * {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.Body form #search-box {
+  top: 5px;
+  position: fixed;
+  z-index: 10;
+  width: calc(100% - 4rem);
+  height: 40px;
+  border-radius: 50px;
+  margin: 0 1rem;
+  padding: 0 1rem;
+}
+
+.Body form #search-box {
+  outline: none;
+}
+
+.Body .search-options .search-home #browse-by {
+  font-weight: normal;
+  font-size: 1rem;
+}
+
+.Body .search-options .search-home {
+  position: fixed;
+  min-height: calc(100% - 320px);
+  width: 100%;
+  color: #ffffff;
+  background-color: #181818;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.Body .search-options .search-home li {
+  font-weight: bold;
+  font-size: 3rem;
+  color: #515151;
+  cursor: pointer;
+}
+
+.Body .search-options .search-tune,
+.Body .search-options .search-artist {
+  height: 100%;
+  padding-bottom: 270px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.Body .search-options .search-key,
+.Body .search-options .search-tuning {
+  height: 100%;
+  padding-bottom: 270px;
+  font-weight: bold;
+  font-size: 2rem;
+  color: #515151;
+  cursor: pointer;
+}
+
+.Body .search-options .search-tune li,
+.Body .search-options .search-artist li,
+.Body .search-options .search-key li,
+.Body .search-options .search-tuning li {
+  padding: 0.5rem;
+}
+
+.Body .search-results {
+  /* padding-top:50px; */
+  min-height: calc(100vh - 320px);
+  font-size: 0.6rem;
+  padding-bottom: 270px;
+}
+
+.Body .search-results ul li {
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.Body .search-results ul li .tune-name {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.Player {
+  width: 100vw;
+  height: 270px;
+  position: fixed;
+  bottom: 0;
+  color: #ffffff;
+  background-color: #323232;
+}
+
+.Player *:focus {
+  outline: none;
+}
+
+.Labels {
+  position: absolute;
+  height: 100px;
+  padding-bottom: 125px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: bold;
+  font-size: 2rem;
+  justify-content: space-evenly;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  color: #282828;
+}
+
+.Player .now-playing {
+  white-space: nowrap;
+  list-style: none;
+  position: relative;
+  z-index: 1;
+  padding-top: 29px;
+  height: 135px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.Player .now-playing li {
+  text-align: center;
+  width: calc(100vw - 2rem);
+  overflow: scroll;
+}
+
+.rhap_container {
+  height: 100px;
+  position: fixed;
+  bottom: 0;
+  background-color: #323232;
+  box-shadow: none;
+}
+
+.rhap_container *:hover {
+  opacity: 1;
+}
+
+.rhap_volume-container {
+  visibility: hidden;
+}
+
+.rhap_main-controls-button,
+.rhap_repeat-button {
+  color: #ffffff;
+}
+
+.rhap_repeat-button {
+  margin-right: 0;
+}
+
+.shuffle-button {
+  position: absolute;
+  right: 0;
+  bottom: 53px;
+  /* float: right; */
+  padding-right: 15px;
+  cursor: pointer;
+}
+
+.rhap_progress-indicator {
+  background-color: #ffffff;
+  top: -6px;
+}
+
+.rhap_main-controls {
+  width: 40vw;
+  justify-content: space-between;
+}
+
+.rhap_play-pause-button {
+  /* font-size: 50px; */
+  /* width: 50px; */
+  /* height: 50px; */
+  height: 45px;
+}
+
+.play-pause-button {
+  width: 45px;
+  height: 45px;
+  /* font-size: 20px; */
+}
+
+.rhap_time {
+  color: #ffffff;
+  font-size: 0.75rem;
+  width: 50px;
+}
+
+.rhap_progress-bar {
+  height: 8px;
+  border-radius: 50px;
+  background-color: #666666;
+}
+
+.rhap_progress-filled {
+  background-color: #dddddd;
+}
+
+.rhap_download-progress {
+  background-color: #868686;
+}
+
+/* BOX SHADOWS */
+.Header {
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.Player {
+  box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.Body form #search-box {
+  /* box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5); */
+  /* box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.5); */
+}
+
+.rhap_progress-indicator {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
