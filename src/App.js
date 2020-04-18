@@ -2,13 +2,11 @@ import React, { useState } from "react";
 import Header from "./Header";
 import Body from "./Body";
 import Player from "./Player";
-// import Fullscreen from "react-full-screen";
 import "./styles.css";
 
 const allTunes = require("./allTunes.json");
 
 export default function App() {
-  // const [isFullScreen, setIsFullScreen] = useState();
 
   const [showSearchBox, setShowSearchBox] = useState(false);
   const [title, setTitle] = useState();
@@ -36,7 +34,6 @@ export default function App() {
 
   return (
     <div className="main">
-      {/* <Fullscreen enabled={isFullScreen}> */}
       <Header
         title={title}
         handleGoHome={handleGoHome}
@@ -59,7 +56,6 @@ export default function App() {
         handleShowSearchBox={handleShowSearchBox}
       />
 
-      {/* </Fullscreen> */}
     </div>
   );
 }

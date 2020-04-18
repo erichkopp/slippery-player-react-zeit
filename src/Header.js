@@ -5,6 +5,7 @@ import MdHome from "react-ionicons/lib/MdHome";
 export default function Header(props) {
   return (
     <div className="Header">
+      
       {props.title === "SLIPPERY PLAYER" ? (
         <MdSearch
           className="icons"

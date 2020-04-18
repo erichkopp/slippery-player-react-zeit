@@ -24,6 +24,10 @@
   -ms-overflow-style: none;
 }
 
+ul {
+  list-style: none;
+}
+
 .main {
   height: 100%;
   width: 100%;
@@ -42,7 +46,6 @@
 }
 
 .Header .title {
-  /* display: flex; */
   width: calc(100vw - 6rem);
   text-align: center;
   white-space: nowrap;
@@ -62,7 +65,6 @@
   background-color: #181818;
   width: 100%;
   height: 100%;
-  /* overflow-y: scroll; */
 }
 
 .Body * {
@@ -122,6 +124,7 @@
 
 .Body .search-options .search-key,
 .Body .search-options .search-tuning {
+  text-align: center;
   height: 100%;
   padding-bottom: 270px;
   font-weight: bold;
@@ -139,6 +142,7 @@
 
 .Body .search-results {
   /* padding-top:50px; */
+  /*text-align: center;*/
   min-height: calc(100vh - 320px);
   font-size: 0.6rem;
   padding-bottom: 270px;
@@ -185,7 +189,6 @@
 
 .Player .now-playing {
   white-space: nowrap;
-  list-style: none;
   position: relative;
   z-index: 1;
   padding-top: 29px;
@@ -248,16 +251,12 @@
 }
 
 .rhap_play-pause-button {
-  /* font-size: 50px; */
-  /* width: 50px; */
-  /* height: 50px; */
   height: 45px;
 }
 
 .play-pause-button {
   width: 45px;
   height: 45px;
-  /* font-size: 20px; */
 }
 
 .rhap_time {
@@ -287,11 +286,6 @@
 
 .Player {
   box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.5);
-}
-
-.Body form #search-box {
-  /* box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5); */
-  /* box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.5); */
 }
 
 .rhap_progress-indicator {
