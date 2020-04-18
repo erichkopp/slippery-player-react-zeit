@@ -24,8 +24,9 @@
   -ms-overflow-style: none;
 }
 
-.App {
+.main {
   height: 100%;
+  width: 100%;
 }
 
 .Header {
@@ -86,11 +87,13 @@
 }
 
 .Body .search-options .search-home #browse-by {
+  text-align: center;
   font-weight: normal;
   font-size: 1rem;
 }
 
 .Body .search-options .search-home {
+  text-align: center;
   position: fixed;
   min-height: calc(100% - 320px);
   width: 100%;
@@ -98,9 +101,7 @@
   background-color: #181818;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
   justify-content: space-evenly;
-  align-items: center;
 }
 
 .Body .search-options .search-home li {
@@ -112,6 +113,7 @@
 
 .Body .search-options .search-tune,
 .Body .search-options .search-artist {
+  text-align: center;
   height: 100%;
   padding-bottom: 270px;
   font-weight: bold;
