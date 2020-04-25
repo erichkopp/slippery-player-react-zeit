@@ -10,8 +10,7 @@
   -khtml-user-select: none; /* Konqueror HTML */
   -moz-user-select: none; /* Old versions of Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently
-                                supported by Chrome, Opera and Firefox */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -28,9 +27,12 @@ ul {
   list-style: none;
 }
 
+.main, .Header, .search-home, .Player, .Labels, .rhap_container {
+  max-width: 600px;
+}
+
 .main {
-  height: 100%;
-  width: 100%;
+  margin: 0 auto;
 }
 
 .Header {
@@ -47,7 +49,7 @@ ul {
 }
 
 .Header .title {
-  width: calc(100vw - 6rem);
+  width: calc(100% - 100px);
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
@@ -56,8 +58,8 @@ ul {
 
 .Header .icons {
   cursor: pointer;
-  width: 2rem;
-  padding: 1rem;
+  width: 35px;
+  padding: 15px;
 }
 
 .Body {
@@ -78,11 +80,12 @@ ul {
   top: 5px;
   position: fixed;
   z-index: 10;
-  width: calc(100% - 4rem);
+  max-width: calc(600px - 60px);
+  width: calc(100% - 60px);
   height: 40px;
   border-radius: 50px;
-  margin: 0 1rem;
-  padding: 0 1rem;
+  margin: 0 15px;
+  padding: 0 15px;
 }
 
 .Body form #search-box {
@@ -143,8 +146,6 @@ ul {
 }
 
 .Body .search-results {
-  /* padding-top:50px; */
-  /*text-align: center;*/
   min-height: calc(100vh - 320px);
   font-size: 0.6rem;
   padding-bottom: 270px;
@@ -161,7 +162,7 @@ ul {
 }
 
 .Player {
-  width: 100vw;
+  width: 100%;
   height: 270px;
   position: fixed;
   bottom: 0;
@@ -204,7 +205,7 @@ ul {
 
 .Player .now-playing li {
   text-align: center;
-  width: calc(100vw - 2rem);
+  width: 100%;
   overflow: scroll;
 }
 
@@ -248,7 +249,7 @@ ul {
 }
 
 .rhap_main-controls {
-  width: 40vw;
+  width: 40%;
   justify-content: space-between;
 }
 

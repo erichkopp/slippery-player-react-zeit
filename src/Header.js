@@ -4,19 +4,18 @@ import MdHome from "react-ionicons/lib/MdHome";
 
 export default function Header(props) {
   return (
-    <div className="Header">
-      
+    <div className="Header">      
       {props.title === "SLIPPERY PLAYER" ? (
         <MdSearch
           className="icons"
-          fontSize="1.5rem"
+          fontSize="20px"
           color="#ffffff"
           onClick={() => props.handleShowSearchBox(true)}
         />
       ) : (
         <MdHome
           className="icons"
-          fontSize="1.5rem"
+          fontSize="20px"
           color="#ffffff"
           onClick={() => props.handleGoHome(true)}
         />
