@@ -27,11 +27,11 @@ ul {
   list-style: none;
 }
 
-.main, .Header, .search-home, .Player, .Labels, .rhap_container {
+.App, .Header, .search-home, .Player, .Labels, .rhap_container {
   max-width: 600px;
 }
 
-.main {
+.App {
   margin: 0 auto;
 }
 

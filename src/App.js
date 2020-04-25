@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import Header from "./Header";
-import Body from "./Body";
-import Player from "./Player";
+import Header from "./components/Header";
+import Body from "./components/NewBody";
+import Player from "./components/Player";
 import "./styles.css";
 
-const allTunes = require("./allTunes.json");
+const allTunes = require("./data/allTunes.json");
 
 export default function App() {
 
@@ -33,7 +33,7 @@ export default function App() {
   };
 
   return (
-    <div className="main">
+    <div className="App">
       <Header
         title={title}
         handleGoHome={handleGoHome}
