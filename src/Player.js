@@ -61,12 +61,18 @@ const Player = React.memo(function Player(props) {
               playlist[tuneIndex]["tune_name"].toUpperCase()}
           </li>
           <li>
-            {playlist[tuneIndex]["played_by"] &&
-              playlist[tuneIndex]["played_by"].toUpperCase()}
+            {playlist[tuneIndex]["played_by"]
+              ? playlist[tuneIndex]["played_by"].toUpperCase()
+              : "-"}
           </li>
-          <li>{playlist[tuneIndex]["key"] && playlist[tuneIndex]["key"]}</li>
+          <li>{playlist[tuneIndex]["key"]
+            ? playlist[tuneIndex]["key"]
+            : "-"}
+            </li>
           <li>
-            {playlist[tuneIndex]["tuning"] && playlist[tuneIndex]["tuning"]}
+            {playlist[tuneIndex]["tuning"]
+              ? playlist[tuneIndex]["tuning"]
+              : "-"}
           </li>
         </ul>
       )}
