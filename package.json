@@ -11,6 +11,7 @@
     "react-full-screen": "0.2.4",
     "react-h5-audio-player": "3.0.2",
     "react-ionicons": "^3.1.4",
+    "react-loading-skeleton": "^2.0.1",
     "react-scripts": "^3.4.1"
   },
   "devDependencies": {

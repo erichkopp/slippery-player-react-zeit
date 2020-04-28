@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from "react";
+import SearchHomeMenu from "./SearchHomeMenu";
+import BrowseTuneArtist from "./BrowseTuneArtist";
+import BrowseKeyTuning from "./BrowseKeyTuning";
+import SearchResults from "./SearchResults";
 
 export default function Body(props) {
   const [showSearchHome, setShowSearchHome] = useState(true);
@@ -16,7 +20,6 @@ export default function Body(props) {
   const [searchBoxResults, setSearchBoxResults] = useState();
 
   const [searchBoxValue, setSearchBoxValue] = useState();
-  
 
   const tunes = props.allTunes.map(tune => tune["tune_name"]);
   const filterTunes = tunes
@@ -38,11 +41,9 @@ export default function Body(props) {
     .filter((tune, index) => tunings.indexOf(tune) === index)
     .sort();
 
-
   const tunesList = props.allTunes
     .filter(tune => tune[searchKey] === searchQuery)
     .sort((a, b) => a["tune_name"].localeCompare(b["tune_name"]));
-
 
   const showHome = () => {
     setShowSearchHome(true);
@@ -56,11 +57,9 @@ export default function Body(props) {
     setShowSearchBoxResults(false);
   };
 
-
   useEffect(() => {
     props.goHome && showHome();
   });
-
 
   const findSearchBoxResults = () => {
     let searchArray = [];
@@ -87,7 +86,6 @@ export default function Body(props) {
     setSearchBoxValue();
   };
 
-
   const handleSearchBoxSubmit = e => {
     e.preventDefault();
 
@@ -100,13 +98,11 @@ export default function Body(props) {
     findSearchBoxResults();
   };
 
-
   const handleEnterSubmit = e => {
     if (e.keyCode === 13) {
       setSearchBoxValue(e.target.value);
     }
   };
-
 
   const handleBrowseClick = e => {
     props.handleGoHome(false);
@@ -134,7 +130,6 @@ export default function Body(props) {
     }
   };
 
-
   const handleSearchClick = e => {
     const key = e.target.id;
     const query = e.target.innerText;
@@ -149,15 +144,12 @@ export default function Body(props) {
     setShowTunings(false);
   };
 
-
   const handleTuneClick = (list, index) => {
     props.handleTuneClick(list, index);
   };
 
-
   return (
     <div className="Body">
-
       {/* SEARCH BOX */}
       {props.showSearchBox && (
         <form onSubmit={handleSearchBoxSubmit}>
@@ -170,129 +162,67 @@ export default function Body(props) {
         </form>
       )}
 
-
       <div
         className="search-options"
         onClick={() => props.handleShowSearchBox(false)}
       >
-
         {/* SEARCH HOME MENU */}
         {showSearchHome && (
-          <ul className="search-home">
-            <li id="browse-by">BROWSE BY:</li>
-            <li id="tune_name" onClick={handleBrowseClick}>
-              TUNE
-            </li>
-            <li id="played_by" onClick={handleBrowseClick}>
-              ARTIST
-            </li>
-            <li id="key" onClick={handleBrowseClick}>
-              KEY
-            </li>
-            <li id="tuning" onClick={handleBrowseClick}>
-              TUNING
-            </li>
-          </ul>
+          <SearchHomeMenu handleBrowseClick={handleBrowseClick} />
         )}
-
 
         {/* SEARCH TUNE MENU */}
         {showTunes && (
-          <ul className="search-tune">
-            {filterTunes.map(tune => (
-              <li id="tune_name" key={tune.id} onClick={handleSearchClick}>
-                {tune}
-              </li>
-            ))}
-          </ul>
+          <BrowseTuneArtist
+            id="tune_name"
+            filteredList={filterTunes}
+            handleSearchClick={handleSearchClick}
+          />
         )}
 
         {/* SEARCH ARTIST MENU */}
         {showArtists && (
-          <ul className="search-artist">
-            {filterArtists.map(
-              artist =>
-                artist && (
-                  <li id="played_by" key={artist.id} onClick={handleSearchClick}>
-                    {artist}
-                  </li>
-                )
-            )}
-          </ul>
+          <BrowseTuneArtist
+            id="played_by"
+            filteredList={filterArtists}
+            handleSearchClick={handleSearchClick}
+          />
         )}
 
         {/* SEARCH KEY MENU */}
         {showKeys && (
-          <ul className="search-key">
-            {filterKeys.map(
-              key =>
-                key && (
-                  <li id="key" key={key.id} onClick={handleSearchClick}>
-                    {key}
-                  </li>
-                )
-            )}
-          </ul>
+          <BrowseKeyTuning
+            id="key"
+            filteredList={filterKeys}
+            handleSearchClick={handleSearchClick}
+          />
         )}
 
         {/* SEARCH TUNINGS MENU */}
         {showTunings && (
-          <ul className="search-tuning">
-            {filterTunings.map(
-              tuning =>
-                tuning && (
-                  <li id="tuning" key={tuning.id} onClick={handleSearchClick}>
-                    {tuning}
-                  </li>
-                )
-            )}
-          </ul>
+          <BrowseKeyTuning
+            id="tuning"
+            filteredList={filterTunings}
+            handleSearchClick={handleSearchClick}
+          />
         )}
       </div>
 
-
       {/* SEARCH RESULTS FROM BROWSE QUERIES */}
       {showBrowseResults && (
-        <div className="search-results">
-          <ul>
-            {tunesList.map((filteredTune, index) => (
-              <li
-                onClick={() => handleTuneClick(tunesList, index)}
-                id={index}
-                key={filteredTune.id}
-              >
-                <div id={index} className="tune-name">
-                  {filteredTune["tune_name"]}
-                </div>
-                <div id={index}>
-                  {filteredTune["played_by"] && filteredTune["played_by"]}
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <SearchResults
+          searchResults={tunesList}
+          handleTuneClick={handleTuneClick}
+        />
       )}
 
       {/* SEARCH RESULTS FROM SEARCH BOX */}
       {showSearchBoxResults && searchBoxResults && (
-        <div className="search-results">
-          <ul>
-            {searchBoxResults.map((tune, index) => (
-              <li
-                onClick={() => handleTuneClick(searchBoxResults, index)}
-                id={index}
-                key={tune.id}
-              >
-                <div id={index} className="tune-name">
-                  {tune["tune_name"]}
-                </div>
-                <div id={index}>{tune["played_by"] && tune["played_by"]}</div>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <SearchResults
+          searchResults={searchBoxResults}
+          handleTuneClick={handleTuneClick}
+        />
       )}
-
     </div>
   );
 }

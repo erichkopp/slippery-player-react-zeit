@@ -27,7 +27,12 @@ ul {
   list-style: none;
 }
 
-.App, .Header, .search-home, .Player, .Labels, .rhap_container {
+.App,
+.Header,
+.search-home,
+.Player,
+.Labels,
+.rhap_container {
   max-width: 600px;
 }
 
@@ -70,7 +75,7 @@ ul {
   height: 100%;
 }
 
-.Body * {
+.Body ul li {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -118,8 +123,7 @@ ul {
   cursor: pointer;
 }
 
-.Body .search-options .search-tune,
-.Body .search-options .search-artist {
+.Body .search-options .BrowseTuneArtist {
   text-align: center;
   height: 100%;
   padding-bottom: 270px;
@@ -127,8 +131,7 @@ ul {
   cursor: pointer;
 }
 
-.Body .search-options .search-key,
-.Body .search-options .search-tuning {
+.Body .search-options .BrowseKeyTuning {
   text-align: center;
   height: 100%;
   padding-bottom: 270px;
@@ -138,10 +141,8 @@ ul {
   cursor: pointer;
 }
 
-.Body .search-options .search-tune li,
-.Body .search-options .search-artist li,
-.Body .search-options .search-key li,
-.Body .search-options .search-tuning li {
+.Body .search-options .BrowseTuneArtist li,
+.Body .search-options .BrowseKeyTuning li {
   padding: 0.5rem;
 }
 
@@ -282,6 +283,17 @@ ul {
   background-color: #868686;
 }
 
+.react-loading-skeleton {
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+  border-radius: 2px;
+}
+
+.css-n87s0r-SkeletonTheme {
+  padding-top: 0.25rem;
+  padding-bottom: 0.5rem;
+}
+
 /* BOX SHADOWS */
 .Header {
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
@@ -293,4 +305,75 @@ ul {
 
 .rhap_progress-indicator {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* LOADING SPINNER */
+.LoadingSpinner {
+  background-color: #181818;
+  height: 100vh;
+  width: 100vw;
+}
+
+.loader {
+  /* display: inline-block; */
+  /* margin: 0 auto; */
+  top: calc(50% - 40px);
+  left: calc(50% - 40px);
+  position: absolute;
+  width: 80px;
+  height: 80px;
+}
+
+.loader div {
+  display: inline-block;
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  background: #ffffff;
+  animation: loader 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+
+.loader div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+
+.loader div:nth-child(2) {
+  left: 32px;
+  animation-delay: -0.12s;
+}
+
+.loader div:nth-child(3) {
+  left: 56px;
+  animation-delay: 0;
+}
+
+@keyframes loader {
+  0% {
+    top: 8px;
+    height: 64px;
+  }
+  50%,
+  100% {
+    top: 24px;
+    height: 32px;
+  }
+}
+
+.loading-subtitle {
+  position: absolute;
+  top: 55%;
+  width: 155px;
+  left: calc(50% - 77.5px);
+  color: #ffffff;
+  text-align: center;
+}
+
+.loading-subtitle p:nth-child(1) {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.loading-subtitle p:nth-child(2) {
+  font-size: .8rem;
 }

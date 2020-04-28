@@ -40,6 +40,12 @@ const Player = React.memo(function Player(props) {
     setTuneIndex(props.tuneIndex);
   }, [props.playList, props.tuneIndex]);
 
+  useEffect(() => {
+    playlist && (
+      document.title = `${playlist[tuneIndex]["tune_name"]} - ${playlist[tuneIndex]["played_by"]}`
+    )
+  }, [tuneIndex])
+
   const handlePlayNext = () => {
     tuneIndex < playlist.length - 1 && setTuneIndex(tuneIndex + 1);
   };
@@ -63,19 +69,15 @@ const Player = React.memo(function Player(props) {
           <li>
             {playlist[tuneIndex]["played_by"]
               ? playlist[tuneIndex]["played_by"].toUpperCase()
-              : "-"
-            }
+              : "-"}
           </li>
-          <li>{playlist[tuneIndex]["key"]
-            ? playlist[tuneIndex]["key"]
-            : "-"
-            }
-            </li>
+          <li>
+            {playlist[tuneIndex]["key"] ? playlist[tuneIndex]["key"] : "-"}
+          </li>
           <li>
             {playlist[tuneIndex]["tuning"]
               ? playlist[tuneIndex]["tuning"]
-              : "-"
-            }
+              : "-"}
           </li>
         </ul>
       )}

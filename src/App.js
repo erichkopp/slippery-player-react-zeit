@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import LoadingSpinner from "./components/LoadingSpinner";
 import Header from "./components/Header";
-import Body from "./components/NewBody";
+import Body from "./components/Body";
 import Player from "./components/Player";
 import "./styles.css";
 
 const allTunes = require("./data/allTunes.json");
 
 export default function App() {
+  const [loading, setLoading] = useState(true);
 
   const [showSearchBox, setShowSearchBox] = useState(false);
   const [title, setTitle] = useState();
@@ -14,6 +16,14 @@ export default function App() {
 
   const [playList, setPlayList] = useState();
   const [tuneIndex, setTuneIndex] = useState();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleTitleChange = page => {
     setTitle(page);
@@ -32,7 +42,9 @@ export default function App() {
     setShowSearchBox(bool);
   };
 
-  return (
+  return loading ? (
+    <LoadingSpinner />
+  ) : (
     <div className="App">
       <Header
         title={title}
@@ -55,7 +67,6 @@ export default function App() {
         tuneIndex={tuneIndex}
         handleShowSearchBox={handleShowSearchBox}
       />
-
     </div>
   );
 }
