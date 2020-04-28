@@ -309,7 +309,7 @@ ul {
 
 /* LOADING SPINNER */
 .LoadingSpinner {
-  background-color: #181818;
+  background-color: #080808;
   height: 100vh;
   width: 100vw;
 }
@@ -376,4 +376,5 @@ ul {
 
 .loading-subtitle p:nth-child(2) {
   font-size: .8rem;
+  letter-spacing: 0.5rem;
 }
