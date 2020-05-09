@@ -44,7 +44,7 @@ const Player = React.memo(function Player(props) {
     playlist && (
       document.title = `${playlist[tuneIndex]["tune_name"]} - ${playlist[tuneIndex]["played_by"]}`
     )
-  }, [tuneIndex])
+  }, [tuneIndex, playlist]);
 
   const handlePlayNext = () => {
     tuneIndex < playlist.length - 1 && setTuneIndex(tuneIndex + 1);
