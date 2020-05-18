@@ -21,6 +21,7 @@ export default function BrowseTuneArtist(props) {
   return (
     <ul className="BrowseTuneArtist">
       {loading ? (
+        // LOADING SKELETON SCREEN
         <>
           {Array(12)
             .fill()
@@ -31,6 +32,7 @@ export default function BrowseTuneArtist(props) {
             ))}
         </>
       ) : (
+        // BROWSE RESULTS
         <>
           {props.filteredList.map(
             filter =>

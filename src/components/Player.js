@@ -82,7 +82,7 @@ const Player = React.memo(function Player(props) {
         </ul>
       )}
 
-      <Labels />
+      {playlist && <Labels />}
 
       <AudioPlayer
         layout="stacked-reverse"

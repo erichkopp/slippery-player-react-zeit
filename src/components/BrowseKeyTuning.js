@@ -21,6 +21,7 @@ export default function BrowseKeyTuning(props) {
   return (
     <ul className="BrowseKeyTuning">
       {loading ? (
+        // LOADING SKELETON SCREEN
         <>
           {Array(8)
             .fill()
@@ -38,6 +39,7 @@ export default function BrowseKeyTuning(props) {
             ))}
         </>
       ) : (
+        // BROWSE RESULTS
         <>
           {props.filteredList.map(
             filter =>

@@ -25,6 +25,7 @@ export default function SearchResults(props) {
   return (
     <div className="search-results">
       {loading ? (
+        // LOADING SKELETON SCREEN
         <>
           {Array(6)
             .fill()
@@ -37,6 +38,7 @@ export default function SearchResults(props) {
             ))}
         </>
       ) : (
+        // SEARCH RESULTS
         <ul>
           {props.searchResults.map((tune, index) => (
             <li
