@@ -67,9 +67,15 @@ ul {
   padding: 0 15px;
 }
 
+.Header .search-icon,
+.Header .home-icon {
+  height: 50px;
+}
+
 .Header .donate-button {
-  width: 40px;
-  height: auto;
+  height: 34px;
+  padding-top: 10px;
+  padding-bottom: 6px;
 }
 
 .Header .paypal-form {
@@ -133,7 +139,7 @@ ul {
 .Body .search-options .search-home li {
   font-weight: bold;
   font-size: 3rem;
-  color: #ffffff;
+  color: #515151;
   cursor: pointer;
 }
 
@@ -151,7 +157,7 @@ ul {
   padding-bottom: 270px;
   font-weight: bold;
   font-size: 2rem;
-  color: #ffffff;
+  color: #515151;
   cursor: pointer;
 }
 

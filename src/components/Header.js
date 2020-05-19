@@ -8,14 +8,14 @@ export default function Header(props) {
     <div className="Header">
       {props.title === "SLIPPERY PLAYER" ? (
         <MdSearch
-          className="icons"
+          className="icons search-icon"
           fontSize="1.5rem"
           color="#ffffff"
           onClick={() => props.handleShowSearchBox(true)}
         />
       ) : (
         <MdHome
-          className="icons"
+          className="icons home-icon"
           fontSize="1.5rem"
           color="#ffffff"
           onClick={() => props.handleGoHome(true)}
