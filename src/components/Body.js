@@ -21,6 +21,15 @@ export default function Body(props) {
 
   const [searchBoxValue, setSearchBoxValue] = useState();
 
+
+  // const [searchBoxWidth, setSearchBoxWidth] = useState();
+  // const searchBox = React.createRef();
+
+  // useEffect(() => {
+  //   searchBox.current && setSearchBoxWidth(searchBox.current.offsetWidth)
+  // })
+
+
   const tunes = props.allTunes.map(tune => tune["tune_name"]);
   const filterTunes = tunes
     .filter((tune, index) => tunes.indexOf(tune) === index)
@@ -101,8 +110,13 @@ export default function Body(props) {
   const handleEnterSubmit = e => {
     if (e.keyCode === 13) {
       setSearchBoxValue(e.target.value);
+      console.log(e.target.value);
     }
   };
+
+  const handleSubmitBtnSubmit = e => {
+    setSearchBoxValue(e.target.previousElementSibling.value);
+  }
 
   const handleBrowseClick = e => {
     props.handleGoHome(false);
@@ -154,11 +168,19 @@ export default function Body(props) {
       {props.showSearchBox && (
         <form onSubmit={handleSearchBoxSubmit}>
           <input
+            placeholder="Search..."
             id="search-box"
             type="text"
-            placeholder="Search..."
             onKeyDown={handleEnterSubmit}
+            // ref={searchBox}
           />
+          {/* <input 
+            id="searchSubmitBtn" 
+            type="submit" 
+            value="Search" 
+            onClick={handleSubmitBtnSubmit}
+            style={{transform: `translate(calc(${searchBoxWidth}px - 85px), -45px)`}}
+          /> */}
         </form>
       )}
 

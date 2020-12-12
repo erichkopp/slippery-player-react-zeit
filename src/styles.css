@@ -5,12 +5,12 @@
   font-family: "Montserrat", sans-serif;
   letter-spacing: 0.25rem;
 
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Old versions of Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
+  /* -webkit-touch-callout: none; /* iOS Safari */
+  /* -webkit-user-select: none; Safari */
+  /* -khtml-user-select: none; Konqueror HTML */
+  /* -moz-user-select: none; Old versions of Firefox */
+  /* -ms-user-select: none; Internet Explorer/Edge */
+  /* user-select: none; Non-prefixed version, currently supported by Chrome, Opera and Firefox */ 
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -116,6 +116,21 @@ ul {
 .Body form #search-box {
   outline: none;
 }
+
+.Body form #searchSubmitBtn {
+  display: none;
+  width: 100px;
+  height: 40px;
+  position: fixed;
+  z-index: 10;
+  border-radius: 50px;
+  transform: translateY(-45px);
+}
+
+.Body form #searchSubmitBtn:hover {
+  cursor: pointer;
+}
+
 
 .Body .search-options .search-home #browse-by {
   cursor: default;
@@ -397,4 +412,10 @@ ul {
 .loading-subtitle p:nth-child(2) {
   font-size: .8rem;
   letter-spacing: 0.5rem;
+}
+
+@media (max-height: 575px) {
+  .Body .search-options .search-home li {
+    font-size: 2rem;
+  }
 }
