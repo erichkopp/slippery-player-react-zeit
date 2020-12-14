@@ -147,6 +147,8 @@ export default function Body(props) {
   const handleSearchClick = e => {
     const key = e.target.id;
     const query = e.target.innerText;
+    console.log(key)
+    console.log(query)
 
     props.handleTitleChange(query);
     setSearchKey(key);
