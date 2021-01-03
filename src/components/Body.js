@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import SearchHomeMenu from "./SearchHomeMenu";
 import BrowseTuneArtist from "./BrowseTuneArtist";
 import BrowseKeyTuning from "./BrowseKeyTuning";
+import BrowseCollection from "./BrowseCollection";
 import SearchResults from "./SearchResults";
 
 export default function Body(props) {
@@ -11,6 +12,7 @@ export default function Body(props) {
   const [showArtists, setShowArtists] = useState(false);
   const [showKeys, setShowKeys] = useState(false);
   const [showTunings, setShowTunings] = useState(false);
+  const [showCollections, setShowCollections] = useState(false);
 
   const [showBrowseResults, setShowBrowseResults] = useState(false);
   const [showSearchBoxResults, setShowSearchBoxResults] = useState(false);
@@ -21,13 +23,6 @@ export default function Body(props) {
 
   const [searchBoxValue, setSearchBoxValue] = useState();
 
-
-  // const [searchBoxWidth, setSearchBoxWidth] = useState();
-  // const searchBox = React.createRef();
-
-  // useEffect(() => {
-  //   searchBox.current && setSearchBoxWidth(searchBox.current.offsetWidth)
-  // })
 
 
   const tunes = props.allTunes.map(tune => tune["tune_name"]);
@@ -50,9 +45,21 @@ export default function Body(props) {
     .filter((tune, index) => tunings.indexOf(tune) === index)
     .sort();
 
-  const tunesList = props.allTunes
-    .filter(tune => tune[searchKey] === searchQuery)
-    .sort((a, b) => a["tune_name"].localeCompare(b["tune_name"]));
+  const collections = props.allTunes.map(tune => tune["collections"]);
+  const filterCollections = collections
+    .filter((tune, index) => collections.indexOf(tune) === index)
+    .sort();
+
+  // const tunesList = props.allTunes
+  //   .filter(tune => tune[searchKey] === searchQuery)
+  //   .sort((a, b) => a["tune_name"].localeCompare(b["tune_name"]));
+
+
+  const tunesList = 
+    searchKey === "collections"
+    ? props.allTunes.filter(tune => tune["collections"][0].includes(searchQuery)).sort((a, b) => a["tune_name"].localeCompare(b["tune_name"]))
+    : props.allTunes.filter(tune => tune[searchKey] === searchQuery).sort((a, b) => a["tune_name"].localeCompare(b["tune_name"]))
+    
 
   const showHome = () => {
     setShowSearchHome(true);
@@ -64,6 +71,7 @@ export default function Body(props) {
     setShowTunings(false);
     setShowBrowseResults(false);
     setShowSearchBoxResults(false);
+    setShowCollections(false);
   };
 
   useEffect(() => {
@@ -114,9 +122,9 @@ export default function Body(props) {
     }
   };
 
-  const handleSubmitBtnSubmit = e => {
-    setSearchBoxValue(e.target.previousElementSibling.value);
-  }
+  // const handleSubmitBtnSubmit = e => {
+  //   setSearchBoxValue(e.target.previousElementSibling.value);
+  // }
 
   const handleBrowseClick = e => {
     props.handleGoHome(false);
@@ -142,6 +150,11 @@ export default function Body(props) {
       setShowTunings(true);
       props.handleTitleChange("BROWSE TUNINGS");
     }
+    if (link === "collection") {
+      setShowSearchHome(false);
+      setShowCollections(true);
+      props.handleTitleChange("BROWSE COLLECTIONS");
+    }
   };
 
   const handleSearchClick = e => {
@@ -158,6 +171,7 @@ export default function Body(props) {
     setShowArtists(false);
     setShowKeys(false);
     setShowTunings(false);
+    setShowCollections(false);
   };
 
   const handleTuneClick = (list, index) => {
@@ -166,6 +180,7 @@ export default function Body(props) {
 
   return (
     <div className="Body">
+
       {/* SEARCH BOX */}
       {props.showSearchBox && (
         <form onSubmit={handleSearchBoxSubmit}>
@@ -174,15 +189,7 @@ export default function Body(props) {
             id="search-box"
             type="text"
             onKeyDown={handleEnterSubmit}
-            // ref={searchBox}
           />
-          {/* <input 
-            id="searchSubmitBtn" 
-            type="submit" 
-            value="Search" 
-            onClick={handleSubmitBtnSubmit}
-            style={{transform: `translate(calc(${searchBoxWidth}px - 85px), -45px)`}}
-          /> */}
         </form>
       )}
 
@@ -227,6 +234,15 @@ export default function Body(props) {
           <BrowseKeyTuning
             id="tuning"
             filteredList={filterTunings}
+            handleSearchClick={handleSearchClick}
+          />
+        )}
+
+        {/* SEARCH COLLECTION MENU */}
+        {showCollections && (
+          <BrowseCollection
+            id="collections"
+            filteredList={filterCollections}
             handleSearchClick={handleSearchClick}
           />
         )}

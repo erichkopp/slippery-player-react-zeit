@@ -20,6 +20,10 @@ export default function SearchHomeMenu(props) {
       <li id="tuning" onClick={props.handleBrowseClick}>
         TUNING
       </li>
+
+      <li id="collection" onClick={props.handleBrowseClick}>
+        COLLECTION
+      </li>
     </ul>
   );
 }

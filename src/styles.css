@@ -23,6 +23,25 @@
   -ms-overflow-style: none;
 }
 
+
+/* Touch / click highlighting */
+
+ul, 
+div {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.Body li:active {
+  background-color: #000000;
+}
+
+svg:active {
+  color: #000000;
+  background-color: transparent;
+  fill: #000000;
+}
+
+
 ul {
   list-style: none;
 }
@@ -92,7 +111,8 @@ ul {
   color: #ffffff;
   background-color: #181818;
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
+  height: calc(100vh-50px);
 }
 
 .Body ul li {
@@ -141,8 +161,9 @@ ul {
 
 .Body .search-options .search-home {
   text-align: center;
-  position: fixed;
-  min-height: calc(100% - 320px);
+  /* position: fixed; */
+  /* min-height: calc(100% - 320px); */
+  height: calc(100vh - 320px);
   width: 100%;
   color: #ffffff;
   background-color: #181818;
@@ -172,7 +193,7 @@ ul {
   padding-bottom: 270px;
   font-weight: bold;
   font-size: 2rem;
-  color: #515151;
+  color: #ffffff;
   cursor: pointer;
 }
 
