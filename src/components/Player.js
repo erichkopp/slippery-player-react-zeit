@@ -13,6 +13,7 @@ const Player = React.memo(function Player(props) {
   const [repeat, setRepeat] = useState(false);
   // const [shuffle, setShuffle] = useState(false);
 
+
   const playIcon = (
     <MdPlay className="play-pause-button" fontSize="45px" color="#ffffff" />
   );
@@ -35,16 +36,19 @@ const Player = React.memo(function Player(props) {
   //   />
   // );
 
+
   useEffect(() => {
     setPlaylist(props.playList);
     setTuneIndex(props.tuneIndex);
   }, [props.playList, props.tuneIndex]);
+
 
   useEffect(() => {
     playlist && (
       document.title = `${playlist[tuneIndex]["tune_name"]} - ${playlist[tuneIndex]["played_by"]}`
     )
   }, [tuneIndex, playlist]);
+
 
   const handlePlayNext = () => {
     tuneIndex < playlist.length - 1 && setTuneIndex(tuneIndex + 1);
@@ -57,6 +61,7 @@ const Player = React.memo(function Player(props) {
   const handleClickNext = () => {
     playlist && tuneIndex < playlist.length - 1 && setTuneIndex(tuneIndex + 1);
   };
+  
 
   return (
     <div className="Player" onClick={() => props.handleShowSearchBox(false)}>

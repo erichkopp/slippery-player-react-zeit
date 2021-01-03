@@ -4,6 +4,7 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 export default function BrowseKeyTuning(props) {
   const [loading, setLoading] = useState(true);
 
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
@@ -12,11 +13,13 @@ export default function BrowseKeyTuning(props) {
     return () => clearTimeout(timer);
   }, []);
 
+
   const randInt = (min, max) => {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min;
   };
+  
 
   return (
     <ul className="BrowseKeyTuning">

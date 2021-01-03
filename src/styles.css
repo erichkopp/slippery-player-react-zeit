@@ -41,6 +41,11 @@ svg:active {
   fill: #000000;
 }
 
+.Header svg:active {
+  background-color: #000000;
+  fill: #ffffff;
+}
+
 
 ul {
   list-style: none;
@@ -179,7 +184,7 @@ ul {
   cursor: pointer;
 }
 
-.Body .search-options .BrowseTuneArtist {
+.Body .search-options .BrowseTuneArtistCollection {
   text-align: center;
   height: 100%;
   padding-bottom: 270px;
@@ -197,7 +202,7 @@ ul {
   cursor: pointer;
 }
 
-.Body .search-options .BrowseTuneArtist li,
+.Body .search-options .BrowseTuneArtistCollection li,
 .Body .search-options .BrowseKeyTuning li {
   padding: 0.5rem;
 }

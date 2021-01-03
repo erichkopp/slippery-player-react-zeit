@@ -4,6 +4,7 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 export default function BrowseCollection(props) {
   const [loading, setLoading] = useState(true);
 
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
@@ -18,6 +19,7 @@ export default function BrowseCollection(props) {
     return Math.floor(Math.random() * (max - min)) + min;
   };
 
+
   // GET ONLY UNIQUE ENTRIES. NO DUPLICATES
   const collectionsList = []
   for (let i = 0; i < props.filteredList.length; i++) {
@@ -26,8 +28,9 @@ export default function BrowseCollection(props) {
     }
   }
 
+
   return (
-    <ul className="BrowseTuneArtist">
+    <ul className="BrowseTuneArtistCollection">
       {loading ? (
         // LOADING SKELETON SCREEN
         <>

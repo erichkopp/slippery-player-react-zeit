@@ -17,6 +17,7 @@ export default function App() {
   const [playList, setPlayList] = useState();
   const [tuneIndex, setTuneIndex] = useState();
 
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
@@ -25,9 +26,11 @@ export default function App() {
     return () => clearTimeout(timer);
   }, []);
 
+
   const handleTitleChange = page => {
     setTitle(page);
   };
+
 
   const handleGoHome = bool => {
     setGoHome(bool);
@@ -38,9 +41,11 @@ export default function App() {
     setTuneIndex(index);
   };
 
+
   const handleShowSearchBox = bool => {
     setShowSearchBox(bool);
   };
+  
 
   return loading ? (
     <LoadingSpinner />

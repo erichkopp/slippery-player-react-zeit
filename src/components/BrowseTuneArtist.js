@@ -4,6 +4,7 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 export default function BrowseTuneArtist(props) {
   const [loading, setLoading] = useState(true);
 
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
@@ -12,14 +13,16 @@ export default function BrowseTuneArtist(props) {
     return () => clearTimeout(timer);
   }, []);
 
+
   const randInt = (min, max) => {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min;
   };
+  
 
   return (
-    <ul className="BrowseTuneArtist">
+    <ul className="BrowseTuneArtistCollection">
       {loading ? (
         // LOADING SKELETON SCREEN
         <>

@@ -50,14 +50,11 @@ export default function Body(props) {
     .filter((tune, index) => collections.indexOf(tune) === index)
     .sort();
 
-  // const tunesList = props.allTunes
-  //   .filter(tune => tune[searchKey] === searchQuery)
-  //   .sort((a, b) => a["tune_name"].localeCompare(b["tune_name"]));
 
 
   const tunesList = 
     searchKey === "collections"
-    ? props.allTunes.filter(tune => tune["collections"][0].includes(searchQuery)).sort((a, b) => a["tune_name"].localeCompare(b["tune_name"]))
+    ? props.allTunes.filter(tune => tune["collections"].includes(searchQuery)).sort((a, b) => a["tune_name"].localeCompare(b["tune_name"]))
     : props.allTunes.filter(tune => tune[searchKey] === searchQuery).sort((a, b) => a["tune_name"].localeCompare(b["tune_name"]))
     
 
@@ -74,9 +71,11 @@ export default function Body(props) {
     setShowCollections(false);
   };
 
+
   useEffect(() => {
     props.goHome && showHome();
   });
+
 
   const findSearchBoxResults = () => {
     let searchArray = [];
@@ -103,6 +102,7 @@ export default function Body(props) {
     setSearchBoxValue();
   };
 
+
   const handleSearchBoxSubmit = e => {
     e.preventDefault();
 
@@ -115,6 +115,7 @@ export default function Body(props) {
     findSearchBoxResults();
   };
 
+
   const handleEnterSubmit = e => {
     if (e.keyCode === 13) {
       setSearchBoxValue(e.target.value);
@@ -122,9 +123,6 @@ export default function Body(props) {
     }
   };
 
-  // const handleSubmitBtnSubmit = e => {
-  //   setSearchBoxValue(e.target.previousElementSibling.value);
-  // }
 
   const handleBrowseClick = e => {
     props.handleGoHome(false);
@@ -157,11 +155,12 @@ export default function Body(props) {
     }
   };
 
+
   const handleSearchClick = e => {
     const key = e.target.id;
     const query = e.target.innerText;
-    console.log(key)
-    console.log(query)
+    // console.log(key)
+    // console.log(query)
 
     props.handleTitleChange(query);
     setSearchKey(key);
@@ -174,9 +173,11 @@ export default function Body(props) {
     setShowCollections(false);
   };
 
+
   const handleTuneClick = (list, index) => {
     props.handleTuneClick(list, index);
   };
+  
 
   return (
     <div className="Body">
