@@ -51,11 +51,12 @@ export default function Body(props) {
     .sort();
 
 
-
   const tunesList = 
     searchKey === "collections"
-    ? props.allTunes.filter(tune => tune["collections"].includes(searchQuery)).sort((a, b) => a["tune_name"].localeCompare(b["tune_name"]))
-    : props.allTunes.filter(tune => tune[searchKey] === searchQuery).sort((a, b) => a["tune_name"].localeCompare(b["tune_name"]))
+      ? props.allTunes.filter(tune => tune["collections"].includes(searchQuery))
+        .sort((a, b) => a["tune_name"].localeCompare(b["tune_name"]))
+      : props.allTunes.filter(tune => tune[searchKey] === searchQuery)
+        .sort((a, b) => a["tune_name"].localeCompare(b["tune_name"]))
     
 
   const showHome = () => {
@@ -96,6 +97,16 @@ export default function Body(props) {
       ) {
         !searchArray.includes(props.allTunes[i]) &&
           searchArray.push(props.allTunes[i]);
+      }
+      for (let j = 0; j < props.allTunes[i]["collections"].length; j++) {
+        if (
+          props.allTunes[i]["collections"][j]
+            .toUpperCase()
+            .includes(searchBoxValue.toUpperCase())
+        ) {
+          !searchArray.includes(props.allTunes[i]) &&
+            searchArray.push(props.allTunes[i])
+        }
       }
     }
     setSearchBoxResults(searchArray);

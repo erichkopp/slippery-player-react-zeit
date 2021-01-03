@@ -10,6 +10,7 @@ import Labels from "./Labels";
 const Player = React.memo(function Player(props) {
   const [playlist, setPlaylist] = useState();
   const [tuneIndex, setTuneIndex] = useState();
+  const [currentTune, setCurrentTune] = useState();
   const [repeat, setRepeat] = useState(false);
   // const [shuffle, setShuffle] = useState(false);
 
@@ -49,6 +50,13 @@ const Player = React.memo(function Player(props) {
     )
   }, [tuneIndex, playlist]);
 
+
+  useEffect(() => {
+    playlist && (
+     setCurrentTune(playlist[tuneIndex]["mp3_link"])
+    )
+  }, [tuneIndex, playlist]);
+  
 
   const handlePlayNext = () => {
     tuneIndex < playlist.length - 1 && setTuneIndex(tuneIndex + 1);
@@ -95,7 +103,8 @@ const Player = React.memo(function Player(props) {
         autoPlayAfterSrcChange={true}
         showSkipControls={true}
         showJumpControls={false}
-        src={playlist && playlist[tuneIndex]["mp3_link"]}
+        // src={playlist && playlist[tuneIndex]["mp3_link"]}
+        src={currentTune}
         onEnded={handlePlayNext}
         onClickPrevious={handleClickPrevious}
         onClickNext={handleClickNext}
