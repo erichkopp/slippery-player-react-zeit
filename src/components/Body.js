@@ -265,6 +265,7 @@ export default function Body(props) {
         <SearchResults
           searchResults={tunesList}
           handleTuneClick={handleTuneClick}
+          currentMp3Link={props.currentMp3Link}
         />
       )}
 
@@ -273,6 +274,7 @@ export default function Body(props) {
         <SearchResults
           searchResults={searchBoxResults}
           handleTuneClick={handleTuneClick}
+          currentMp3Link={props.currentMp3Link}
         />
       )}
     </div>

@@ -32,17 +32,17 @@ div {
 }
 
 .Body li:active {
-  background-color: #000000;
+  background: #000000;
 }
 
 svg:active {
   color: #000000;
-  background-color: transparent;
+  background: transparent;
   fill: #000000;
 }
 
 .Header svg:active {
-  background-color: #000000;
+  background: #000000;
   fill: #ffffff;
 }
 

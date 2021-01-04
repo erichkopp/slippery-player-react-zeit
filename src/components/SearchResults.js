@@ -48,6 +48,11 @@ export default function SearchResults(props) {
               onClick={() => props.handleTuneClick(props.searchResults, index)}
               id={index}
               key={tune.id}
+              style={
+                tune["mp3_link"] === props.currentMp3Link
+                  ? {background: "#000000"}
+                  : null
+              }
             >
               <div id={index} className="tune-name">
                 {tune["tune_name"]}

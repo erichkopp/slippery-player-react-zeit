@@ -16,6 +16,7 @@ export default function App() {
 
   const [playList, setPlayList] = useState();
   const [tuneIndex, setTuneIndex] = useState();
+  const [currentMp3Link, setCurrentMp3Link] = useState();
 
 
   useEffect(() => {
@@ -39,7 +40,12 @@ export default function App() {
   const handleTuneClick = (tunesList, index) => {
     setPlayList(tunesList);
     setTuneIndex(index);
+    handleCurrentMp3Link(tunesList, index);
   };
+
+  const handleCurrentMp3Link = (tunesList, index) => {
+    setCurrentMp3Link(tunesList[index]["mp3_link"]);
+  }
 
 
   const handleShowSearchBox = bool => {
@@ -60,6 +66,7 @@ export default function App() {
       <Body
         allTunes={allTunes}
         handleTuneClick={handleTuneClick}
+        currentMp3Link={currentMp3Link}
         handleTitleChange={handleTitleChange}
         handleGoHome={handleGoHome}
         goHome={goHome}
@@ -71,6 +78,7 @@ export default function App() {
         playList={playList}
         tuneIndex={tuneIndex}
         handleShowSearchBox={handleShowSearchBox}
+        handleCurrentMp3Link={handleCurrentMp3Link}
       />
     </div>
   );

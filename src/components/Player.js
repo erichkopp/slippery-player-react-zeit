@@ -10,7 +10,6 @@ import Labels from "./Labels";
 const Player = React.memo(function Player(props) {
   const [playlist, setPlaylist] = useState();
   const [tuneIndex, setTuneIndex] = useState();
-  const [currentTune, setCurrentTune] = useState();
   const [repeat, setRepeat] = useState(false);
   // const [shuffle, setShuffle] = useState(false);
 
@@ -18,9 +17,11 @@ const Player = React.memo(function Player(props) {
   const playIcon = (
     <MdPlay className="play-pause-button" fontSize="45px" color="#ffffff" />
   );
+
   const pauseIcon = (
     <MdPause className="play-pause-button" fontSize="45px" color="#ffffff" />
   );
+
   const repeatIcon = (
     <MdRepeat
       onClick={() => setRepeat(!repeat)}
@@ -28,6 +29,7 @@ const Player = React.memo(function Player(props) {
       color={repeat ? "#ffffff" : "#515151"}
     />
   );
+
   // const shuffleIcon = (
   //   <MdShuffle
   //     onClick={() => setShuffle(!shuffle)}
@@ -50,13 +52,12 @@ const Player = React.memo(function Player(props) {
     )
   }, [tuneIndex, playlist]);
 
-
   useEffect(() => {
     playlist && (
-     setCurrentTune(playlist[tuneIndex]["mp3_link"])
+      props.handleCurrentMp3Link(playlist, tuneIndex)
     )
-  }, [tuneIndex, playlist]);
-  
+  }, [props, playlist, tuneIndex])
+
 
   const handlePlayNext = () => {
     tuneIndex < playlist.length - 1 && setTuneIndex(tuneIndex + 1);
@@ -69,7 +70,7 @@ const Player = React.memo(function Player(props) {
   const handleClickNext = () => {
     playlist && tuneIndex < playlist.length - 1 && setTuneIndex(tuneIndex + 1);
   };
-  
+
 
   return (
     <div className="Player" onClick={() => props.handleShowSearchBox(false)}>
@@ -85,7 +86,9 @@ const Player = React.memo(function Player(props) {
               : "-"}
           </li>
           <li>
-            {playlist[tuneIndex]["key"] ? playlist[tuneIndex]["key"] : "-"}
+            {playlist[tuneIndex]["key"]
+              ? playlist[tuneIndex]["key"]
+              : "-"}
           </li>
           <li>
             {playlist[tuneIndex]["tuning"]
@@ -103,8 +106,7 @@ const Player = React.memo(function Player(props) {
         autoPlayAfterSrcChange={true}
         showSkipControls={true}
         showJumpControls={false}
-        // src={playlist && playlist[tuneIndex]["mp3_link"]}
-        src={currentTune}
+        src={playlist && playlist[tuneIndex]["mp3_link"]}
         onEnded={handlePlayNext}
         onClickPrevious={handleClickPrevious}
         onClickNext={handleClickNext}
